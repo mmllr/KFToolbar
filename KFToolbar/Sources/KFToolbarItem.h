@@ -10,12 +10,12 @@
 
 @interface KFToolbarItem : NSButton
 
-+ (instancetype)toolbarItemWithType:(NSButtonType)type icon:(NSImage *)iconImage tag:(NSUInteger)itemTag;
-+ (instancetype)toolbarItemWithIcon:(NSImage *)iconImage tag:(NSUInteger)itemTag;
++ (instancetype)toolbarItemWithType:(NSButtonType)type icon:(NSImage *)iconImage tag:(NSInteger)itemTag;
++ (instancetype)toolbarItemWithIcon:(NSImage *)iconImage tag:(NSInteger)itemTag;
 
-- (id)initWithButtonType:(NSButtonType)type icon:(NSImage *)iconImage tag:(NSUInteger)itemTag;
-- (id)initWithIcon:(NSImage *)iconImage tag:(NSUInteger)itemTag;
-- (id)initWithTitle:(NSString*)title tag:(NSUInteger)itemTag;
+- (id)initWithButtonType:(NSButtonType)type icon:(NSImage *)iconImage tag:(NSInteger)itemTag;
+- (id)initWithIcon:(NSImage *)iconImage tag:(NSInteger)itemTag;
+- (id)initWithTitle:(NSString*)title tag:(NSInteger)itemTag;
 
 - (void)hideLeftShadow;
 - (void)hideRightShadow;

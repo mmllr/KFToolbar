@@ -32,7 +32,7 @@
 {
 	if (!_variableNames) {
 		NSMutableArray *names = [NSMutableArray arrayWithCapacity:self.count];
-		for (int i = 0; i < self.count; ++i) {
+		for (NSUInteger i = 0; i < self.count; ++i) {
 			[names addObject:[self variableNameAtIndex:i]];
 		}
 		_variableNames = [names copy];

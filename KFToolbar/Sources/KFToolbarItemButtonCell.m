@@ -59,10 +59,8 @@ colorSpace: [NSColorSpace genericGrayColorSpace]]
     {
         case NSToggleButton:
             return self.state == NSOnState ? NSOffState : NSOnState;
-            break;
         default:
             return NSOffState;
-            break;
     }
 }
 

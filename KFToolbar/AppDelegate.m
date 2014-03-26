@@ -34,7 +34,7 @@
 	KFToolbarItem *textItem = [[KFToolbarItem alloc] initWithTitle:@"Text" tag:10];
     self.toolbar.leftItems = @[addItem, removeItem, textItem];
     self.toolbar.rightItems = @[[KFToolbarItem toolbarItemWithIcon:[NSImage imageNamed:NSImageNameEnterFullScreenTemplate] tag:2], [KFToolbarItem toolbarItemWithIcon:[NSImage imageNamed:NSImageNameExitFullScreenTemplate] tag:3]];
-    [self.toolbar setItemSelectionHandler:^(KFToolbarItemSelectionType selectionType, KFToolbarItem *toolbarItem, NSUInteger tag)
+    [self.toolbar setItemSelectionHandler:^(KFToolbarItemSelectionType selectionType, KFToolbarItem *toolbarItem, NSInteger tag)
     {
         switch (tag)
         {

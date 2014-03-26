@@ -11,13 +11,13 @@
 
 @implementation KFToolbarItem
 
-+ (instancetype)toolbarItemWithType:(NSButtonType)type icon:(NSImage *)iconImage tag:(NSUInteger)itemTag
++ (instancetype)toolbarItemWithType:(NSButtonType)type icon:(NSImage *)iconImage tag:(NSInteger)itemTag
 {
     return [[KFToolbarItem alloc] initWithButtonType:type icon:iconImage tag:itemTag];
 }
 
 
-+ (instancetype)toolbarItemWithIcon:(NSImage *)iconImage tag:(NSUInteger)itemTag
++ (instancetype)toolbarItemWithIcon:(NSImage *)iconImage tag:(NSInteger)itemTag
 {
     return [[KFToolbarItem alloc] initWithIcon:iconImage tag:itemTag];
 }
@@ -28,7 +28,7 @@
 	return nil;
 }
 
-- (id)initWithTitle:(NSString *)title tag:(NSUInteger)itemTag
+- (id)initWithTitle:(NSString *)title tag:(NSInteger)itemTag
 {
 	self = [self initWithButtonType:NSMomentaryPushInButton icon:nil tag:itemTag];
 	if (self) {
@@ -37,12 +37,12 @@
 	return self;
 }
 
-- (id)initWithIcon:(NSImage *)iconImage tag:(NSUInteger)itemTag
+- (id)initWithIcon:(NSImage *)iconImage tag:(NSInteger)itemTag
 {
 	return [self initWithButtonType:NSMomentaryPushInButton icon:iconImage tag:itemTag];
 }
 
-- (id)initWithButtonType:(NSButtonType)type icon:(NSImage *)iconImage tag:(NSUInteger)itemTag
+- (id)initWithButtonType:(NSButtonType)type icon:(NSImage *)iconImage tag:(NSInteger)itemTag
 {
     self = [super initWithFrame:NSZeroRect];
     if (self)

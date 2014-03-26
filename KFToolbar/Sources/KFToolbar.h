@@ -15,7 +15,7 @@ typedef NS_ENUM(NSUInteger, KFToolbarItemSelectionType)
     KFToolbarItemSelectionTypeDidSelect
 };
 
-typedef void (^KFToolbarEventsHandler)(KFToolbarItemSelectionType selectionType, KFToolbarItem *targetToolbarItem, NSUInteger tag);
+typedef void (^KFToolbarEventsHandler)(KFToolbarItemSelectionType selectionType, KFToolbarItem *targetToolbarItem, NSInteger tag);
 
 @interface KFToolbar : NSView
 

@@ -25,3 +25,12 @@ Icon
 
 # Thumbnails
 ._*
+
+# CI script
+build
+coverage.xml
+test-reports
+lint.xml
+compile_commands.json
+xcodebuild.log
+ 
