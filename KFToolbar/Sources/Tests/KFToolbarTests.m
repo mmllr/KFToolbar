@@ -167,7 +167,7 @@
 
 	XCTAssertTrue(sut.isEnabled);
 	[sut.subviews enumerateObjectsUsingBlock:^(NSButton *button, NSUInteger idx, BOOL *stop) {
-		XCTAssertTrue(button.enabled);
+		XCTAssertTrue(button.isEnabled);
 	}];
 }
 
@@ -177,12 +177,12 @@
 	sut.enabled = NO;
 	XCTAssertFalse(sut.isEnabled);
 	[sut.subviews enumerateObjectsUsingBlock:^(NSButton *button, NSUInteger idx, BOOL *stop) {
-		XCTAssertFalse(button.enabled);
+		XCTAssertFalse(button.isEnabled);
 	}];
 
 	sut.enabled = YES;
 	[sut.subviews enumerateObjectsUsingBlock:^(NSButton *button, NSUInteger idx, BOOL *stop) {
-		XCTAssertTrue(button.enabled);
+		XCTAssertTrue(button.isEnabled);
 	}];
 }
 
@@ -190,16 +190,16 @@
 	[self givenAToolBarWithThreeLeftItemsAndTwoRightItems];
 
 	[sut setEnabled:NO forItem:0];
-	XCTAssertFalse([self buttonForItem:0].enabled);
+	XCTAssertFalse([self buttonForItem:0].isEnabled);
 
 	[sut setEnabled:YES forItem:0];
-	XCTAssertTrue([self buttonForItem:0].enabled);
+	XCTAssertTrue([self buttonForItem:0].isEnabled);
 
 	[sut setEnabled:NO forItem:3];
-	XCTAssertFalse([self buttonForItem:3].enabled);
+	XCTAssertFalse([self buttonForItem:3].isEnabled);
 
 	[sut setEnabled:YES forItem:3];
-	XCTAssertTrue([self buttonForItem:3].enabled);
+	XCTAssertTrue([self buttonForItem:3].isEnabled);
 }
 
 - (void)testThatItAllowsOverlappingItems
