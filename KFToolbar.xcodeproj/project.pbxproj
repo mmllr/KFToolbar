@@ -7,23 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		281E714B18A6625300302E21 /* KFViewNameBuilderSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 281E714A18A6625300302E21 /* KFViewNameBuilderSpec.m */; };
 		281E714E18A662A200302E21 /* KFViewNameBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 281E714D18A662A200302E21 /* KFViewNameBuilder.m */; };
-		281E715018A66B2300302E21 /* KFToolBarConstraintBuilderSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 281E714F18A66B2300302E21 /* KFToolBarConstraintBuilderSpec.m */; };
 		281E715318A66B3E00302E21 /* KFToolBarConstraintBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 281E715218A66B3E00302E21 /* KFToolBarConstraintBuilder.m */; };
-		28380BB218A7F33F00680EC7 /* NSArrayKFIAdditionsSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 28380BB118A7F33F00680EC7 /* NSArrayKFIAdditionsSpec.m */; };
 		28380BB518A7F37800680EC7 /* NSArray+KFIAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 28380BB418A7F37800680EC7 /* NSArray+KFIAdditions.m */; };
-		28BB54D518A63E2300F4B80A /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 28BB54D418A63E2300F4B80A /* Podfile */; };
+		284715731A9100E800612FF5 /* KFToolbarItemButtonCellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 284715721A9100E800612FF5 /* KFToolbarItemButtonCellTests.m */; };
+		284715761A91046B00612FF5 /* KFToolbarItemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 284715751A91046B00612FF5 /* KFToolbarItemTests.m */; };
+		2852AC0A1A910A7E00404A0C /* KFToolbarTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2852AC091A910A7E00404A0C /* KFToolbarTests.m */; };
+		2852AC0D1A91118700404A0C /* NSLayoutConstraint+MKMAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2852AC0C1A91118700404A0C /* NSLayoutConstraint+MKMAdditions.m */; };
 		28BB54DC18A63E5600F4B80A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28BB54DB18A63E5600F4B80A /* XCTest.framework */; };
 		28BB54E218A63E5600F4B80A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 28BB54E018A63E5600F4B80A /* InfoPlist.strings */; };
-		28BB54EE18A643CD00F4B80A /* KFToolBarSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 28BB54ED18A643CD00F4B80A /* KFToolBarSpec.m */; };
-		28BB54F218A646C700F4B80A /* KFItemConstraintBuilderSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 28BB54F118A646C700F4B80A /* KFItemConstraintBuilderSpec.m */; };
 		28BB54F518A6474400F4B80A /* KFItemConstraintBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 28BB54F418A6474400F4B80A /* KFItemConstraintBuilder.m */; };
 		28BB54F618A64A0A00F4B80A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72B843C116E4FA6700507CDE /* Cocoa.framework */; };
-		28BB54F818A659E600F4B80A /* KFViewBindingsBuilderSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 28BB54F718A659E600F4B80A /* KFViewBindingsBuilderSpec.m */; };
 		28BB54FB18A65A2400F4B80A /* KFViewBindingsBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 28BB54FA18A65A2400F4B80A /* KFViewBindingsBuilder.m */; };
-		28E30C3018A6DC8800CB1BF5 /* KFToolbarItemButtonCellSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E30C2F18A6DC8800CB1BF5 /* KFToolbarItemButtonCellSpec.m */; };
-		28FB110E18A69ADB008D5973 /* KFToolBarItemSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FB110D18A69ADB008D5973 /* KFToolBarItemSpec.m */; };
 		28FB111118A6B434008D5973 /* KFToolbarItemButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FB111018A6B434008D5973 /* KFToolbarItemButtonCell.m */; };
 		72B843C216E4FA6700507CDE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72B843C116E4FA6700507CDE /* Cocoa.framework */; };
 		72B843CC16E4FA6700507CDE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 72B843CA16E4FA6700507CDE /* InfoPlist.strings */; };
@@ -33,7 +28,6 @@
 		72B843D816E4FA6700507CDE /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72B843D616E4FA6700507CDE /* MainMenu.xib */; };
 		72B843E316E4FB2200507CDE /* KFToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B843E016E4FB2200507CDE /* KFToolbar.m */; };
 		72B843E416E4FB2200507CDE /* KFToolbarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B843E216E4FB2200507CDE /* KFToolbarItem.m */; };
-		73EFF4CB1EBF447E8BE5C34F /* libPods-KFToolbarTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F10E784AD16A40EA9FCF4EB0 /* libPods-KFToolbarTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,34 +41,30 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		281E714A18A6625300302E21 /* KFViewNameBuilderSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KFViewNameBuilderSpec.m; path = KFToolbar/Tests/KFViewNameBuilderSpec.m; sourceTree = SOURCE_ROOT; };
 		281E714C18A662A200302E21 /* KFViewNameBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KFViewNameBuilder.h; sourceTree = "<group>"; };
 		281E714D18A662A200302E21 /* KFViewNameBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KFViewNameBuilder.m; sourceTree = "<group>"; };
-		281E714F18A66B2300302E21 /* KFToolBarConstraintBuilderSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KFToolBarConstraintBuilderSpec.m; path = KFToolbar/Tests/KFToolBarConstraintBuilderSpec.m; sourceTree = SOURCE_ROOT; };
 		281E715118A66B3E00302E21 /* KFToolBarConstraintBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KFToolBarConstraintBuilder.h; sourceTree = "<group>"; };
 		281E715218A66B3E00302E21 /* KFToolBarConstraintBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KFToolBarConstraintBuilder.m; sourceTree = "<group>"; };
-		28380BB018A7DFBD00680EC7 /* KFToolBarPrivate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KFToolBarPrivate.h; sourceTree = "<group>"; };
-		28380BB118A7F33F00680EC7 /* NSArrayKFIAdditionsSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSArrayKFIAdditionsSpec.m; path = KFToolbar/Tests/NSArrayKFIAdditionsSpec.m; sourceTree = SOURCE_ROOT; };
 		28380BB318A7F37800680EC7 /* NSArray+KFIAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+KFIAdditions.h"; sourceTree = "<group>"; };
 		28380BB418A7F37800680EC7 /* NSArray+KFIAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+KFIAdditions.m"; sourceTree = "<group>"; };
-		28BB54D418A63E2300F4B80A /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
+		284715721A9100E800612FF5 /* KFToolbarItemButtonCellTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KFToolbarItemButtonCellTests.m; sourceTree = "<group>"; };
+		284715741A91044500612FF5 /* MKMLayoutConstraintAssertions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKMLayoutConstraintAssertions.h; sourceTree = "<group>"; };
+		284715751A91046B00612FF5 /* KFToolbarItemTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KFToolbarItemTests.m; sourceTree = "<group>"; };
+		284A5AB91A9144690001DCAA /* KFToolbarItemType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KFToolbarItemType.h; sourceTree = "<group>"; };
+		2852AC091A910A7E00404A0C /* KFToolbarTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KFToolbarTests.m; sourceTree = "<group>"; };
+		2852AC0B1A91118700404A0C /* NSLayoutConstraint+MKMAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLayoutConstraint+MKMAdditions.h"; sourceTree = "<group>"; };
+		2852AC0C1A91118700404A0C /* NSLayoutConstraint+MKMAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLayoutConstraint+MKMAdditions.m"; sourceTree = "<group>"; };
 		28BB54DA18A63E5600F4B80A /* KFToolbarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KFToolbarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		28BB54DB18A63E5600F4B80A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		28BB54DF18A63E5600F4B80A /* KFToolbarTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "KFToolbarTests-Info.plist"; sourceTree = "<group>"; };
 		28BB54E118A63E5600F4B80A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		28BB54E518A63E5600F4B80A /* KFToolbarTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KFToolbarTests-Prefix.pch"; sourceTree = "<group>"; };
-		28BB54ED18A643CD00F4B80A /* KFToolBarSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KFToolBarSpec.m; path = KFToolbar/Tests/KFToolBarSpec.m; sourceTree = SOURCE_ROOT; };
-		28BB54F118A646C700F4B80A /* KFItemConstraintBuilderSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KFItemConstraintBuilderSpec.m; path = KFToolbar/Tests/KFItemConstraintBuilderSpec.m; sourceTree = SOURCE_ROOT; };
 		28BB54F318A6474400F4B80A /* KFItemConstraintBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KFItemConstraintBuilder.h; sourceTree = "<group>"; };
 		28BB54F418A6474400F4B80A /* KFItemConstraintBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KFItemConstraintBuilder.m; sourceTree = "<group>"; };
-		28BB54F718A659E600F4B80A /* KFViewBindingsBuilderSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KFViewBindingsBuilderSpec.m; path = KFToolbar/Tests/KFViewBindingsBuilderSpec.m; sourceTree = SOURCE_ROOT; };
 		28BB54F918A65A2400F4B80A /* KFViewBindingsBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KFViewBindingsBuilder.h; sourceTree = "<group>"; };
 		28BB54FA18A65A2400F4B80A /* KFViewBindingsBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KFViewBindingsBuilder.m; sourceTree = "<group>"; };
-		28E30C2F18A6DC8800CB1BF5 /* KFToolbarItemButtonCellSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KFToolbarItemButtonCellSpec.m; path = KFToolbar/Tests/KFToolbarItemButtonCellSpec.m; sourceTree = SOURCE_ROOT; };
-		28FB110D18A69ADB008D5973 /* KFToolBarItemSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KFToolBarItemSpec.m; path = KFToolbar/Tests/KFToolBarItemSpec.m; sourceTree = SOURCE_ROOT; };
 		28FB110F18A6B434008D5973 /* KFToolbarItemButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KFToolbarItemButtonCell.h; sourceTree = "<group>"; };
 		28FB111018A6B434008D5973 /* KFToolbarItemButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KFToolbarItemButtonCell.m; sourceTree = "<group>"; };
-		6C935D2E3D084A79A9BBA9F2 /* Pods-KFToolbarTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KFToolbarTests.xcconfig"; path = "Pods/Pods-KFToolbarTests.xcconfig"; sourceTree = "<group>"; };
 		72B843BE16E4FA6700507CDE /* KFToolbar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KFToolbar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		72B843C116E4FA6700507CDE /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		72B843C416E4FA6700507CDE /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -92,7 +82,6 @@
 		72B843E016E4FB2200507CDE /* KFToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KFToolbar.m; sourceTree = "<group>"; };
 		72B843E116E4FB2200507CDE /* KFToolbarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KFToolbarItem.h; sourceTree = "<group>"; };
 		72B843E216E4FB2200507CDE /* KFToolbarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KFToolbarItem.m; sourceTree = "<group>"; };
-		F10E784AD16A40EA9FCF4EB0 /* libPods-KFToolbarTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KFToolbarTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,7 +91,6 @@
 			files = (
 				28BB54F618A64A0A00F4B80A /* Cocoa.framework in Frameworks */,
 				28BB54DC18A63E5600F4B80A /* XCTest.framework in Frameworks */,
-				73EFF4CB1EBF447E8BE5C34F /* libPods-KFToolbarTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,17 +105,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		284715711A91009600612FF5 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				2852AC0B1A91118700404A0C /* NSLayoutConstraint+MKMAdditions.h */,
+				2852AC0C1A91118700404A0C /* NSLayoutConstraint+MKMAdditions.m */,
+				284715741A91044500612FF5 /* MKMLayoutConstraintAssertions.h */,
+				284715721A9100E800612FF5 /* KFToolbarItemButtonCellTests.m */,
+				284715751A91046B00612FF5 /* KFToolbarItemTests.m */,
+				2852AC091A910A7E00404A0C /* KFToolbarTests.m */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
 		28BB54DD18A63E5600F4B80A /* KFToolbarTests */ = {
 			isa = PBXGroup;
 			children = (
-				28E30C2F18A6DC8800CB1BF5 /* KFToolbarItemButtonCellSpec.m */,
-				28FB110D18A69ADB008D5973 /* KFToolBarItemSpec.m */,
-				28BB54ED18A643CD00F4B80A /* KFToolBarSpec.m */,
-				28BB54F718A659E600F4B80A /* KFViewBindingsBuilderSpec.m */,
-				28BB54F118A646C700F4B80A /* KFItemConstraintBuilderSpec.m */,
-				281E714A18A6625300302E21 /* KFViewNameBuilderSpec.m */,
-				281E714F18A66B2300302E21 /* KFToolBarConstraintBuilderSpec.m */,
-				28380BB118A7F33F00680EC7 /* NSArrayKFIAdditionsSpec.m */,
 				28BB54DE18A63E5600F4B80A /* Supporting Files */,
 			);
 			path = KFToolbarTests;
@@ -150,7 +143,6 @@
 				28BB54DD18A63E5600F4B80A /* KFToolbarTests */,
 				72B843C016E4FA6700507CDE /* Frameworks */,
 				72B843BF16E4FA6700507CDE /* Products */,
-				6C935D2E3D084A79A9BBA9F2 /* Pods-KFToolbarTests.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -169,7 +161,6 @@
 				72B843C116E4FA6700507CDE /* Cocoa.framework */,
 				28BB54DB18A63E5600F4B80A /* XCTest.framework */,
 				72B843C316E4FA6700507CDE /* Other Frameworks */,
-				F10E784AD16A40EA9FCF4EB0 /* libPods-KFToolbarTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -199,7 +190,6 @@
 		72B843C816E4FA6700507CDE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				28BB54D418A63E2300F4B80A /* Podfile */,
 				72B843C916E4FA6700507CDE /* KFToolbar-Info.plist */,
 				72B843CA16E4FA6700507CDE /* InfoPlist.strings */,
 				72B843CD16E4FA6700507CDE /* main.m */,
@@ -212,8 +202,8 @@
 		72B843DE16E4FB2200507CDE /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				284715711A91009600612FF5 /* Tests */,
 				72B843DF16E4FB2200507CDE /* KFToolbar.h */,
-				28380BB018A7DFBD00680EC7 /* KFToolBarPrivate.h */,
 				72B843E016E4FB2200507CDE /* KFToolbar.m */,
 				72B843E116E4FB2200507CDE /* KFToolbarItem.h */,
 				72B843E216E4FB2200507CDE /* KFToolbarItem.m */,
@@ -229,6 +219,7 @@
 				281E715218A66B3E00302E21 /* KFToolBarConstraintBuilder.m */,
 				28380BB318A7F37800680EC7 /* NSArray+KFIAdditions.h */,
 				28380BB418A7F37800680EC7 /* NSArray+KFIAdditions.m */,
+				284A5AB91A9144690001DCAA /* KFToolbarItemType.h */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -240,11 +231,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 28BB54E818A63E5600F4B80A /* Build configuration list for PBXNativeTarget "KFToolbarTests" */;
 			buildPhases = (
-				11562FCE256B4B3C95190914 /* Check Pods Manifest.lock */,
 				28BB54D618A63E5600F4B80A /* Sources */,
 				28BB54D718A63E5600F4B80A /* Frameworks */,
 				28BB54D818A63E5600F4B80A /* Resources */,
-				0E96E65CB30A4A35B563EC6E /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -279,7 +268,7 @@
 		72B843B616E4FA6700507CDE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "com.kf-interactive.toolbar";
 				TargetAttributes = {
 					28BB54D918A63E5600F4B80A = {
@@ -320,59 +309,21 @@
 			files = (
 				72B843CC16E4FA6700507CDE /* InfoPlist.strings in Resources */,
 				72B843D216E4FA6700507CDE /* Credits.rtf in Resources */,
-				28BB54D518A63E2300F4B80A /* Podfile in Resources */,
 				72B843D816E4FA6700507CDE /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		0E96E65CB30A4A35B563EC6E /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-KFToolbarTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		11562FCE256B4B3C95190914 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		28BB54D618A63E5600F4B80A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28380BB218A7F33F00680EC7 /* NSArrayKFIAdditionsSpec.m in Sources */,
-				28BB54F818A659E600F4B80A /* KFViewBindingsBuilderSpec.m in Sources */,
-				281E714B18A6625300302E21 /* KFViewNameBuilderSpec.m in Sources */,
-				28BB54EE18A643CD00F4B80A /* KFToolBarSpec.m in Sources */,
-				28E30C3018A6DC8800CB1BF5 /* KFToolbarItemButtonCellSpec.m in Sources */,
-				281E715018A66B2300302E21 /* KFToolBarConstraintBuilderSpec.m in Sources */,
-				28FB110E18A69ADB008D5973 /* KFToolBarItemSpec.m in Sources */,
-				28BB54F218A646C700F4B80A /* KFItemConstraintBuilderSpec.m in Sources */,
+				284715761A91046B00612FF5 /* KFToolbarItemTests.m in Sources */,
+				2852AC0A1A910A7E00404A0C /* KFToolbarTests.m in Sources */,
+				2852AC0D1A91118700404A0C /* NSLayoutConstraint+MKMAdditions.m in Sources */,
+				284715731A9100E800612FF5 /* KFToolbarItemButtonCellTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,12 +392,12 @@
 /* Begin XCBuildConfiguration section */
 		28BB54E918A63E5600F4B80A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6C935D2E3D084A79A9BBA9F2 /* Pods-KFToolbarTests.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/KFToolbar.app/Contents/MacOS/KFToolbar";
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
@@ -470,12 +421,12 @@
 		};
 		28BB54EA18A63E5600F4B80A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6C935D2E3D084A79A9BBA9F2 /* Pods-KFToolbarTests.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/KFToolbar.app/Contents/MacOS/KFToolbar";
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				COMBINE_HIDPI_IMAGES = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -498,7 +449,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
 				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
 				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
@@ -557,7 +507,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
 				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
 				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;

@@ -25,15 +25,29 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    KFToolbarItem *addItem = [KFToolbarItem toolbarItemWithType:NSToggleButton icon:[NSImage imageNamed:NSImageNameAddTemplate] tag:0];
-    addItem.toolTip = @"Add";
-    addItem.keyEquivalent = @"q";
-    KFToolbarItem *removeItem = [KFToolbarItem toolbarItemWithIcon:[NSImage imageNamed:NSImageNameRemoveTemplate] tag:1];
-    removeItem.toolTip = @"Remove";
+    KFToolbarItem *addItem = [KFToolbarItem toolbarItemWithType:kKFToolbarItemTypeToggle
+														  image:[NSImage imageNamed:NSImageNameAddTemplate]
+														   text:@""
+															tag:0
+												  keyEquivalent:@"q"
+														toolTip:@"Add"];
 
-	KFToolbarItem *textItem = [[KFToolbarItem alloc] initWithTitle:@"Text" tag:10];
+	KFToolbarItem *removeItem = [KFToolbarItem toolbarItemWithType:kKFToolbarItemTypePush
+															 image:[NSImage imageNamed:NSImageNameRemoveTemplate] text:@""
+															   tag:1
+													 keyEquivalent:@""
+														   toolTip:@"Remove"];
+
+	KFToolbarItem *textItem = [KFToolbarItem pushToolbarItemWithText:@"Disable all"
+																 tag:3];
     self.toolbar.leftItems = @[addItem, removeItem, textItem];
-    self.toolbar.rightItems = @[[KFToolbarItem toolbarItemWithIcon:[NSImage imageNamed:NSImageNameEnterFullScreenTemplate] tag:2], [KFToolbarItem toolbarItemWithIcon:[NSImage imageNamed:NSImageNameExitFullScreenTemplate] tag:3]];
+	self.toolbar.rightItems = @[[KFToolbarItem toggleToolbarItemWithText:@"Enable"
+																	tag:4],
+								[KFToolbarItem pushToolbarItemWithImage:[NSImage imageNamed:NSImageNameEnterFullScreenTemplate]
+																	tag:5],
+								[KFToolbarItem pushToolbarItemWithImage:[NSImage imageNamed:NSImageNameExitFullScreenTemplate]
+																	tag:6]
+								];
     [self.toolbar setItemSelectionHandler:^(KFToolbarItemSelectionType selectionType, KFToolbarItem *toolbarItem, NSInteger tag)
     {
         switch (tag)
@@ -41,12 +55,11 @@
             case 0:
                 break;
             
-            case 1:
-                addItem.enabled = !addItem.isEnabled;
+			case 1: {
+				[self.toolbar setEnabled:NO forItem:0];
                 break;
-
-            case 2:
-            {
+			}
+            case 2: {
                 [self setControlsEnabled:NO forView:self.toolbar.superview];
                 double delayInSeconds = 2.0;
                 dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
@@ -57,8 +70,7 @@
                 break;
             }
                 
-            case 3:
-            {
+            case 3: {
                 self.toolbar.enabled = NO;
                 double delayInSeconds = 2.0;
                 dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
@@ -68,7 +80,9 @@
                 });
                 break;
             }
-
+			case 4: {
+				[self.toolbar setEnabled:YES forItem:0];
+			}
             default:
                 break;
         }

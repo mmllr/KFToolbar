@@ -19,14 +19,13 @@ typedef void (^KFToolbarEventsHandler)(KFToolbarItemSelectionType selectionType,
 
 @interface KFToolbar : NSView
 
-@property (nonatomic, readonly) NSArray *items;
-@property (nonatomic, strong) NSArray *leftItems;
-@property (nonatomic, strong) NSArray *rightItems;
+@property (nonatomic, copy) NSArray *leftItems;
+@property (nonatomic, copy) NSArray *rightItems;
 @property (nonatomic, getter = isEnabled) BOOL enabled;
-@property (nonatomic, assign) NSUInteger selectedIndex;
+@property (nonatomic, readonly) NSUInteger selectedIndex;
 @property (nonatomic) BOOL allowOverlappingItems;
+@property (nonatomic, copy) KFToolbarEventsHandler itemSelectionHandler;
 
-- (void)setItemSelectionHandler:(KFToolbarEventsHandler)itemSelectionHandler;
-- (void)updateItemVisibility;
+- (void)setEnabled:(BOOL)enabled forItem:(NSUInteger)itemIndex;
 
 @end

@@ -5,7 +5,7 @@ set -o pipefail
 # set the desired version of Xcode
 export DEVELOPER_DIR="/Applications/Xcode.app/Contents/Developer"
 
-XCWORKSPACE="KFToolbar.xcworkspace"
+XCPROJECT="KFToolbar.xcodeproj"
 XCSCHEME="KFToolbar"
 
 if [ -z "${OCLINT}" ]; then
@@ -51,7 +51,7 @@ if [ -d build ]; then
 fi
 
 echo "[*] Perform tests"
-${XCTOOL} -workspace ${XCWORKSPACE} \
+${XCTOOL} -project ${XCPROJECT} \
 -scheme ${XCSCHEME} \
 -reporter junit:${WORKSPACE}/build/test-reports/junit-report.xml \
 -reporter plain \
@@ -82,7 +82,7 @@ if [ ! -z ${OCLINT_XCODEBUILD} ]; then
 
 	mkdir -p ${WORKSPACE}/build/oclint
 
-	${XCODEBUILD} -workspace ${XCWORKSPACE} \
+	${XCODEBUILD} -project ${XCPROJECT} \
 	-scheme ${XCSCHEME} \
 	-configuration Release \
 	DSTROOT=${WORKSPACE}/build/Products \
@@ -92,7 +92,7 @@ if [ ! -z ${OCLINT_XCODEBUILD} ]; then
 	CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO \
 	clean
 
-	${XCODEBUILD} -workspace ${XCWORKSPACE} \
+	${XCODEBUILD} -project ${XCPROJECT} \
 	-scheme ${XCSCHEME} \
 	-configuration Release \
 	CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO \

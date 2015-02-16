@@ -8,12 +8,12 @@
 
 #import <Cocoa/Cocoa.h>
 
+#import "KFToolbarItemType.h"
+
 @interface KFToolbarItemButtonCell : NSButtonCell
 
-@property (nonatomic) NSButtonType buttonType;
+@property (nonatomic) KFToolbarItemType itemType;
 @property (nonatomic, assign) BOOL showLeftShadow;
 @property (nonatomic, assign) BOOL showRightShadow;
-
-- (id)initWithButtonType:(NSButtonType)buttonType;
 
 @end

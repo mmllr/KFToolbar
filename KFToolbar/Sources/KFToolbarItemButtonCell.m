@@ -21,33 +21,44 @@ colorSpace: [NSColorSpace genericGrayColorSpace]]
 
 @implementation KFToolbarItemButtonCell
 
-- (id)init
+- (instancetype)init
 {
-	return [self initWithButtonType:NSMomentaryPushInButton];
+	return [self initTextCell:@""];
 }
 
-- (id)initWithButtonType:(NSButtonType)buttonType
+- (instancetype)initTextCell:(NSString *)aString
 {
-    self = [super init];
+    self = [super initTextCell:aString];
     if (self)
     {
 		_showLeftShadow = YES;
 		_showRightShadow = YES;
-		_buttonType = buttonType;
+		_itemType = kKFToolbarItemTypePush;
         self.state = NSOffState;
         self.bezelStyle = NSTexturedRoundedBezelStyle;
     }
     return self;
 }
 
+- (instancetype)initImageCell:(NSImage *)image {
+	self = [super initImageCell:image];
+	if (self) {
+		_showLeftShadow = YES;
+		_showRightShadow = YES;
+		_itemType = kKFToolbarItemTypePush;
+		self.state = NSOffState;
+		self.bezelStyle = NSTexturedRoundedBezelStyle;
+	}
+	return self;
+}
 
-- (NSInteger)showsStateBy
+- (NSCellStyleMask)showsStateBy
 {
     return 0;
 }
 
 
-- (NSInteger)highlightsBy
+- (NSCellStyleMask)highlightsBy
 {
     return NSPushInCellMask;
 }
@@ -55,9 +66,9 @@ colorSpace: [NSColorSpace genericGrayColorSpace]]
 
 - (NSInteger)nextState
 {
-    switch (self.buttonType)
+    switch (self.itemType)
     {
-        case NSToggleButton:
+        case kKFToolbarItemTypeToggle:
             return self.state == NSOnState ? NSOffState : NSOnState;
         default:
             return NSOffState;

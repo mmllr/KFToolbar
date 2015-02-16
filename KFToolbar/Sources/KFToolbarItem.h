@@ -8,16 +8,23 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface KFToolbarItem : NSButton
+#import "KFToolbarItemType.h"
 
-+ (instancetype)toolbarItemWithType:(NSButtonType)type icon:(NSImage *)iconImage tag:(NSInteger)itemTag;
-+ (instancetype)toolbarItemWithIcon:(NSImage *)iconImage tag:(NSInteger)itemTag;
+@interface KFToolbarItem : NSObject
 
-- (id)initWithButtonType:(NSButtonType)type icon:(NSImage *)iconImage tag:(NSInteger)itemTag;
-- (id)initWithIcon:(NSImage *)iconImage tag:(NSInteger)itemTag;
-- (id)initWithTitle:(NSString*)title tag:(NSInteger)itemTag;
++ (instancetype)toolbarItemWithType:(KFToolbarItemType)type image:(NSImage *)iconImage text:(NSString*)text tag:(NSInteger)itemTag keyEquivalent:(NSString*)keyEquivalent toolTip:(NSString*)toolTip;
++ (instancetype)toggleToolbarItemWithImage:(NSImage*)image tag:(NSInteger)tag;
++ (instancetype)toggleToolbarItemWithText:(NSString*)text tag:(NSInteger)tag;
++ (instancetype)pushToolbarItemWithImage:(NSImage*)image tag:(NSInteger)tag;
++ (instancetype)pushToolbarItemWithText:(NSString*)text tag:(NSInteger)tag;
 
-- (void)hideLeftShadow;
-- (void)hideRightShadow;
+- (instancetype)initWithType:(KFToolbarItemType)type image:(NSImage *)iconImage text:(NSString*)text tag:(NSInteger)itemTag keyEquivalent:(NSString*)keyEquivalent toolTip:(NSString*)toolTip NS_DESIGNATED_INITIALIZER;
+
+@property (nonatomic, readonly) KFToolbarItemType type;
+@property (nonatomic, readonly) NSString *text;
+@property (nonatomic, readonly) NSString *keyEquivalent;
+@property (nonatomic, readonly) NSString *toolTip;
+@property (nonatomic, readonly) NSImage *image;
+@property (nonatomic, readonly) NSInteger tag;
 
 @end

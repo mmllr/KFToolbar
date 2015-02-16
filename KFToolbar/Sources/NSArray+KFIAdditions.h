@@ -10,6 +10,7 @@
 
 @interface NSArray (KFIAdditions)
 
-- (NSArray*)kfi_minusArray:(NSArray*)other;
+- (instancetype)kfi_minusArray:(NSArray*)other;
+- (instancetype)kfi_map:(id (^)(id input))transformBlock;
 
 @end

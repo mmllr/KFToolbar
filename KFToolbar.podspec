@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             =  "KFToolbar"
-  s.version          =  "0.0.6"
+  s.version          =  "0.1.1"
   s.license          =  { :type => 'MIT', :file => 'LICENSE' }
   s.summary          =  "An NSView subview that handles KFToolbarItems."
   
@@ -13,4 +13,5 @@ Pod::Spec.new do |s|
   s.framework        =  'Foundation'
   s.requires_arc     =  true
   s.source_files     =  'KFToolbar/Sources/**/*.{h,m}'
+  s.exclude_files = 'KFToolbar/Sources/Tests/*.{h,m}'
 end

@@ -7,70 +7,65 @@
 //
 
 #import "KFToolbarItem.h"
-#import "KFToolbarItemButtonCell.h"
 
 @implementation KFToolbarItem
 
-+ (instancetype)toolbarItemWithType:(NSButtonType)type icon:(NSImage *)iconImage tag:(NSInteger)itemTag
-{
-    return [[KFToolbarItem alloc] initWithButtonType:type icon:iconImage tag:itemTag];
++ (instancetype)toolbarItemWithType:(KFToolbarItemType)type image:(NSImage *)iconImage text:(NSString*)text tag:(NSInteger)itemTag keyEquivalent:(NSString*)keyEquivalent toolTip:(NSString*)toolTip {
+	return [[self alloc] initWithType:type
+								image:iconImage
+								 text:text
+								  tag:itemTag
+						keyEquivalent:keyEquivalent
+							  toolTip:toolTip];
 }
 
-
-+ (instancetype)toolbarItemWithIcon:(NSImage *)iconImage tag:(NSInteger)itemTag
-{
-    return [[KFToolbarItem alloc] initWithIcon:iconImage tag:itemTag];
++ (instancetype)toggleToolbarItemWithImage:(NSImage*)image tag:(NSInteger)tag {
+	return [self toolbarItemWithType:kKFToolbarItemTypeToggle
+							   image:image
+								text:@""
+								 tag:tag
+					   keyEquivalent:@""
+							 toolTip:@""];
 }
 
-- (id)init
-{
-	[NSException raise:NSInternalInconsistencyException format:@"-init not allowed, use -initWithIcon:tag: or -initWithButtonType:icon:tag:"];
-	return nil;
++ (instancetype)toggleToolbarItemWithText:(NSString*)text tag:(NSInteger)tag {
+	return [self toolbarItemWithType:kKFToolbarItemTypeToggle
+							   image:nil
+								text:text
+								 tag:tag
+					   keyEquivalent:@""
+							 toolTip:@""];
 }
 
-- (id)initWithTitle:(NSString *)title tag:(NSInteger)itemTag
-{
-	self = [self initWithButtonType:NSMomentaryPushInButton icon:nil tag:itemTag];
++ (instancetype)pushToolbarItemWithImage:(NSImage*)image tag:(NSInteger)tag {
+	return [self toolbarItemWithType:kKFToolbarItemTypePush
+							   image:image
+								text:@""
+								 tag:tag
+					   keyEquivalent:@""
+							 toolTip:@""];
+}
+
++ (instancetype)pushToolbarItemWithText:(NSString*)text tag:(NSInteger)tag {
+	return [self toolbarItemWithType:kKFToolbarItemTypePush
+							   image:nil
+								text:text
+								 tag:tag
+					   keyEquivalent:@""
+							 toolTip:@""];
+}
+
+- (instancetype)initWithType:(KFToolbarItemType)type image:(NSImage *)iconImage text:(NSString *)text tag:(NSInteger)itemTag keyEquivalent:(NSString *)keyEquivalent toolTip:(NSString *)toolTip {
+	self = [super init];
 	if (self) {
-		[self setTitle:title];
+		_type = type;
+		_image = iconImage;
+		_tag = itemTag;
+		_text = [text copy];
+		_keyEquivalent = [keyEquivalent copy];
+		_toolTip = [toolTip copy];
 	}
 	return self;
-}
-
-- (id)initWithIcon:(NSImage *)iconImage tag:(NSInteger)itemTag
-{
-	return [self initWithButtonType:NSMomentaryPushInButton icon:iconImage tag:itemTag];
-}
-
-- (id)initWithButtonType:(NSButtonType)type icon:(NSImage *)iconImage tag:(NSInteger)itemTag
-{
-    self = [super initWithFrame:NSZeroRect];
-    if (self)
-    {
-        KFToolbarItemButtonCell *cell = [[KFToolbarItemButtonCell alloc] initWithButtonType:type];
-        cell.state = NSOffState;
-        [self setCell:cell];
-        [self setButtonType:type];
-        [self setImage:iconImage];
-        [self setTag:itemTag];
-        [self sendActionOn:NSLeftMouseDownMask];
-        [self setEnabled:YES];
-		[self setTranslatesAutoresizingMaskIntoConstraints:NO];
-    }
-    return self;
-}
-
-- (void)hideLeftShadow
-{
-	KFToolbarItemButtonCell *cell = [self cell];
-    cell.showLeftShadow = NO;
-}
-
-
-- (void)hideRightShadow
-{
-    KFToolbarItemButtonCell *cell = [self cell];
-	cell.showRightShadow = NO;
 }
 
 @end

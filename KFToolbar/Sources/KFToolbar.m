@@ -7,20 +7,31 @@
 
 #import "KFToolbar.h"
 #import "KFToolbarItem.h"
-#import "KFToolBarConstraintBuilder.h"
-#import "KFToolBarPrivate.h"
 #import "NSArray+KFIAdditions.h"
+#import "KFToolbarItemButtonCell.h"
+#import "KFToolBarConstraintBuilder.h"
+
+typedef NS_ENUM(NSUInteger, KFToolbarVisibilityTransitionState)
+{
+	kKFToolbarVisibilityTransitionStateNone = 0,
+	kKFToolbarVisibilityTransitionStateFadeOut,
+	kKFToolbarVisibilityTransitionStateFadeIn
+};
+
+@interface KFToolbar ()
+
+@property KFToolbarVisibilityTransitionState visibilityTransitionState;
+@property (nonatomic, strong) NSArray *leftViews;
+@property (nonatomic, strong) NSArray *rightViews;
+@property (nonatomic, strong) NSArray *buttonConstraints;
+@property (nonatomic, readonly) NSArray *leftButtonConstraints;
+@property (nonatomic, readonly) NSArray *rightButtonConstraints;
+@property (nonatomic, readwrite) NSUInteger selectedIndex;
+
+
+@end
 
 @implementation KFToolbar
-{
-	NSMutableArray *_leftItems;
-	NSMutableArray *_rightItems;
-}
-
-@dynamic leftItems;
-@dynamic rightItems;
-@dynamic items;
-@dynamic allowOverlappingItems;
 
 #pragma mark class methods
 
@@ -34,10 +45,9 @@
 - (id)initWithFrame:(NSRect)frameRect
 {
 	self = [super initWithFrame:frameRect];
-    if (self)
-    {
-		_leftItems = [NSMutableArray new];
-		_rightItems = [NSMutableArray new];
+    if (self) {
+		_leftItems = @[];
+		_rightItems = @[];
         [self setupDefaults];
     }
     return self;
@@ -46,8 +56,9 @@
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
 	self = [super initWithCoder:aDecoder];
-    if (self)
-    {
+    if (self) {
+		_leftItems = @[];
+		_rightItems = @[];
         [self setupDefaults];
     }
     return self;
@@ -55,6 +66,8 @@
 
 - (void)setupDefaults
 {
+	self.allowOverlappingItems = YES;
+	self.enabled = YES;
 	[self setTranslatesAutoresizingMaskIntoConstraints:NO];
 }
 
@@ -72,33 +85,16 @@
 	[super viewWillMoveToWindow:newWindow];
 }
 
-- (void)layout
-{
-	[super layout];
-	[self updateItemVisibility];
-}
-
 - (void)updateConstraints
 {
-	NSString *formatString = self.constraintsBuilder.visualFormatString;
-	if (formatString) {
-		self.horizontalItemConstraints = [NSLayoutConstraint constraintsWithVisualFormat:formatString options:NSLayoutFormatAlignAllCenterY metrics:nil views:self.constraintsBuilder.viewBindings];
+	if (self.buttonConstraints) {
+		[self removeConstraints:self.buttonConstraints];
 	}
+	self.buttonConstraints = [[self horizontalButtonConstraints] arrayByAddingObjectsFromArray:[self verticalButtonConstraints]];
+	[self addConstraints:self.buttonConstraints];
 	[super updateConstraints];
 }
 
-- (void)setHorizontalItemConstraints:(NSArray *)horizontalItemConstraints
-{
-	if (![_horizontalItemConstraints isEqualToArray:horizontalItemConstraints]) {
-		if (_horizontalItemConstraints) {
-			[self removeConstraints:_horizontalItemConstraints];
-		}
-		_horizontalItemConstraints = horizontalItemConstraints;
-		[self addConstraints:horizontalItemConstraints];
-	}
-}
-
-#pragma mark - layout
 
 - (void)fadeOut
 {
@@ -130,13 +126,13 @@
 
 - (void)updateItemVisibility
 {
-    KFToolbarItem *lastLeftItem = self.leftItems.lastObject;
-    KFToolbarItem *firstRightItem = [_rightItems count] ? self.rightItems[0] : nil;
+    NSButton *lastLeftItem = self.leftViews.lastObject;
+    NSButton *firstRightItem = self.rightViews.firstObject;
 	
 	if (!lastLeftItem && !firstRightItem) {
 		return;
 	}
-    BOOL intersecting = CGRectIntersectsRect(lastLeftItem.frame, firstRightItem.frame);
+	BOOL intersecting = CGRectIntersectsRect(lastLeftItem.frame, firstRightItem.frame);
 	
 	if (intersecting && ![self isHidden]) {
 		[self fadeOut];
@@ -146,7 +142,43 @@
 	}
 }
 
+- (void)layout {
+	[super layout];
+	[self updateItemVisibility];
+}
+
 #pragma mark - items
+
+- (void)setLeftItems:(NSArray *)leftItems {
+	if (leftItems != _leftItems) {
+		_leftItems = [leftItems copy];
+		
+		[self.leftViews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+		self.leftViews = [self createButtonsFromItems:leftItems];
+		[self.leftViews enumerateObjectsUsingBlock:^(NSView *view, NSUInteger idx, BOOL *stop) {
+			[self addSubview:view];
+		}];
+		self.needsUpdateConstraints = YES;
+	}
+}
+
+- (void)setRightItems:(NSArray *)rightItems {
+	if (rightItems != _rightItems) {
+		_rightItems = [rightItems copy];
+		
+		[self.rightViews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+		self.rightViews = [self createButtonsFromItems:rightItems];
+		[self.rightViews enumerateObjectsUsingBlock:^(NSView *view, NSUInteger idx, BOOL *stop) {
+			[self addSubview:view];
+		}];
+		self.needsUpdateConstraints = YES;
+	}
+}
+
+- (void)setAllowOverlappingItems:(BOOL)allowOverlappingItems {
+	_allowOverlappingItems = allowOverlappingItems;
+	self.needsUpdateConstraints = YES;
+}
 
 - (NSArray *)items
 {
@@ -156,113 +188,90 @@
 - (void)setEnabled:(BOOL)enabled
 {
 	_enabled = enabled;
-	[self.items enumerateObjectsUsingBlock:^(KFToolbarItem *item, NSUInteger idx, BOOL *stop) {
-		[item setEnabled:enabled];
+	[self.subviews enumerateObjectsUsingBlock:^(NSButton* button, NSUInteger idx, BOOL *stop) {
+		button.enabled = enabled;
 	}];
 }
 
-- (void)prepareItem:(KFToolbarItem *)item
-{
-	[item removeConstraints:[item constraints]];
-	item.action = @selector(selectToolbarItem:);
-	item.target = self;
-	[item invalidateIntrinsicContentSize];
-	[self addSubview:item];
-	// center horizontally
-	[self addConstraint:[NSLayoutConstraint constraintWithItem:item attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
-	
-}
-
-- (void)prepareItemsForRemoval:(NSArray*)items
-{
-	if (!items) {
+- (void)setEnabled:(BOOL)enabled forItem:(NSUInteger)itemIndex {
+	if (itemIndex >= self.subviews.count) {
 		return;
 	}
-	[items makeObjectsPerformSelector:@selector(removeFromSuperview)];
-}
-
-- (NSArray*)leftItems
-{
-	return _leftItems ? [_leftItems copy] : @[];
-}
-
-- (void)setLeftItems:(NSArray *)leftItems
-{
-    if (![leftItems isEqualToArray:_leftItems])
-    {
-        [self prepareItemsForRemoval:_leftItems];
-		[_leftItems removeAllObjects];
-
-		for (KFToolbarItem *item in leftItems) {
-			if (![item isKindOfClass:[KFToolbarItem class]]) {
-				continue;
-			}
-			[_leftItems addObject:item];
-			[self prepareItem:item];
-		}
-		[[_leftItems firstObject] performSelector:@selector(hideLeftShadow)];
-
-		self.rightItems = [self.rightItems kfi_minusArray:leftItems];
-		self.constraintsBuilder = [[KFToolBarConstraintBuilder alloc] initWithLeftItems:_leftItems rightItems:self.rightItems];
-
-		[self setNeedsUpdateConstraints:YES];
-    }
-}
-
-- (NSArray*)rightItems
-{
-	return _rightItems ? [_rightItems copy] : @[];
-}
-
-- (void)setRightItems:(NSArray *)rightItems
-{
-    if (![rightItems isEqualToArray:_rightItems])
-    {
-       [self prepareItemsForRemoval:_rightItems];
-		[_rightItems removeAllObjects];
-		
-		for (KFToolbarItem *item in rightItems) {
-			if (![item isKindOfClass:[KFToolbarItem class]]) {
-				continue;
-			}
-			[_rightItems addObject:item];
-			[self prepareItem:item];
-			
-		}
-		[[_rightItems lastObject] performSelector:@selector(hideRightShadow)];
-		self.leftItems = [self.leftItems kfi_minusArray:rightItems];
-		self.constraintsBuilder = [[KFToolBarConstraintBuilder alloc] initWithLeftItems:self.leftItems rightItems:_rightItems];
-       	[self setNeedsUpdateConstraints:YES];
-    }
-}
-
-- (BOOL)allowOverlappingItems
-{
-	return self.constraintsBuilder ? self.constraintsBuilder.allowOverlappingItems : YES;
-}
-
-- (void)setAllowOverlappingItems:(BOOL)allowOverlappingItems
-{
-	self.constraintsBuilder.allowOverlappingItems = allowOverlappingItems;
-	[self setNeedsUpdateConstraints:YES];
-}
-
-#pragma mark - Selection Handling
-
-- (void)setItemSelectionHandler:(KFToolbarEventsHandler)itemSelectionHandler
-{
-    self.selectionHandler = itemSelectionHandler;
+	NSButton *button = self.subviews[itemIndex];
+	button.enabled = enabled;
 }
 
 - (void)selectToolbarItem:(id)sender
 {
-    KFToolbarItem *item = (KFToolbarItem *)sender;
+	NSParameterAssert([sender isKindOfClass:[NSButton class]]);
 
-	self.selectedIndex = [self.items indexOfObject:item];
-    if (self.selectionHandler)
-    {
-        self.selectionHandler(KFToolbarItemSelectionTypeWillSelect, item, item.tag);
+	KFToolbarItem *item = [self itemForButton:sender];
+	_selectedIndex = [self.subviews indexOfObject:sender];
+    if (self.itemSelectionHandler) {
+        self.itemSelectionHandler(KFToolbarItemSelectionTypeWillSelect, item, item.tag);
     }
+}
+
+- (KFToolbarItem*)itemForButton:(NSButton*)sender {
+	NSUInteger itemIndex = [self.subviews indexOfObject:sender];
+
+	if (itemIndex < self.leftItems.count) {
+		return self.leftItems[itemIndex];
+	}
+	itemIndex -= self.leftItems.count;
+	if (itemIndex < self.rightItems.count) {
+		return self.rightItems[itemIndex];
+	}
+	return nil;
+}
+
+- (NSArray*)createButtonsFromItems:(NSArray*)itemArray {
+	return [itemArray kfi_map:^NSButton*(KFToolbarItem *item) {
+		NSParameterAssert([item isKindOfClass:[KFToolbarItem class]]);
+		
+		NSButton *button = [[NSButton alloc] initWithFrame:NSZeroRect];
+		KFToolbarItemButtonCell *cell = [[KFToolbarItemButtonCell alloc] init];
+		cell.itemType = item.type;
+		cell.showLeftShadow = item != self.leftItems.firstObject;
+		cell.showRightShadow = item != self.rightItems.lastObject;
+		button.cell = cell;
+		[button setButtonType:NSMomentaryPushButton];
+		button.title = item.text;
+		button.image = item.image;
+		button.tag = item.tag;
+		button.keyEquivalent = item.keyEquivalent;
+		button.toolTip = item.toolTip;
+		button.translatesAutoresizingMaskIntoConstraints = NO;
+		button.target = self;
+		button.action = @selector(selectToolbarItem:);
+		return button;
+	}];
+}
+
+- (NSArray*)horizontalButtonConstraints {
+	KFToolBarConstraintBuilder *builder = [[KFToolBarConstraintBuilder alloc] initWithLeftItems:self.leftViews rightItems:self.rightViews];
+	builder.allowOverlappingItems = self.allowOverlappingItems;
+	NSString *visualFormatString = builder.visualFormatString;
+	if (!visualFormatString) {
+		return @[];
+	}
+	return [NSLayoutConstraint constraintsWithVisualFormat:visualFormatString
+												   options:NSLayoutFormatAlignAllCenterY
+												   metrics:nil
+													 views:builder.viewBindings];
+}
+
+- (NSArray*)verticalButtonConstraints {
+	NSView *superview = self;
+	return [self.subviews kfi_map:^NSLayoutConstraint*(NSView *view) {
+		return [NSLayoutConstraint constraintWithItem:view
+											attribute:NSLayoutAttributeCenterY
+											relatedBy:NSLayoutRelationEqual
+											   toItem:superview
+											attribute:NSLayoutAttributeCenterY
+										   multiplier:1
+											 constant:0];
+	}];
 }
 
 @end
