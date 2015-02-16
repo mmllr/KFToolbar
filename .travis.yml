@@ -1,9 +1,8 @@
 language: objective-c
 env: LC_ALL="en_US.UTF-8"
-rvm: 1.9.3
+
 before_install:
-   - gem install cocoapods --no-ri --no-rdoc
    - sudo easy_install cpp-coveralls
-script: xcodebuild -workspace KFToolbar.xcworkspace -scheme KFToolbar -sdk macosx10.9 test
+script: xcodebuild -project KFToolbar.xcodeproj -scheme KFToolbar -sdk macosx10.9 test
 after_success:
-  - ./coveralls.rb --extension m --exclude-folder KFToolbar/Tests --exclude-folder Pods --exclude-folder KFToolbarTests
+  - ./coveralls.rb --extension m --exclude-folder KFToolbar/Sources/Tests --exclude-folder KFToolbarTests
