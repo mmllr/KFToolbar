@@ -8,6 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 
+#ifndef NS_DESIGNATED_INITIALIZER
+#define NS_DESIGNATED_INITIALIZER __attribute__((objc_designated_initializer))
+#endif
+
 #import "KFToolbarItemType.h"
 
 @interface KFToolbarItem : NSObject

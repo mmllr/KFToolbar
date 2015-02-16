@@ -34,6 +34,8 @@ colorSpace: [NSColorSpace genericGrayColorSpace]]
 		_showLeftShadow = YES;
 		_showRightShadow = YES;
 		_itemType = kKFToolbarItemTypePush;
+		self.showsStateBy = 0;
+		self.highlightsBy = NSPushInCellMask;
         self.state = NSOffState;
         self.bezelStyle = NSTexturedRoundedBezelStyle;
     }
@@ -47,22 +49,12 @@ colorSpace: [NSColorSpace genericGrayColorSpace]]
 		_showRightShadow = YES;
 		_itemType = kKFToolbarItemTypePush;
 		self.state = NSOffState;
+		self.highlightsBy = NSPushInCellMask;
+		self.state = NSOffState;
 		self.bezelStyle = NSTexturedRoundedBezelStyle;
 	}
 	return self;
 }
-
-- (NSCellStyleMask)showsStateBy
-{
-    return 0;
-}
-
-
-- (NSCellStyleMask)highlightsBy
-{
-    return NSPushInCellMask;
-}
-
 
 - (NSInteger)nextState
 {
@@ -77,8 +69,7 @@ colorSpace: [NSColorSpace genericGrayColorSpace]]
 
 - (void)drawBezelWithFrame:(NSRect)frame inView:(NSView *)controlView
 {
-    if (self.isHighlighted || self.state == NSOnState)
-    {
+    if (self.isHighlighted || self.state == NSOnState) {
         [[NSGraphicsContext currentContext] saveGraphicsState];
         
         // Draw light vertical gradient
@@ -89,8 +80,7 @@ colorSpace: [NSColorSpace genericGrayColorSpace]]
         shadow.shadowOffset = NSMakeSize(1.0f, 0.0f);
         shadow.shadowBlurRadius = 2.0f;
         shadow.shadowColor = [NSColor darkGrayColor];
-        if (self.showLeftShadow)
-        {
+        if (self.showLeftShadow)  {
             [shadow set];
         }
 		
@@ -104,8 +94,7 @@ colorSpace: [NSColorSpace genericGrayColorSpace]]
         [path fill];
 		
         // shadow of the right border
-        if (self.showRightShadow)
-        {
+        if (self.showRightShadow)  {
             shadow.shadowOffset = NSMakeSize(-1.0f, 0.0f);
             [shadow set];
         }
