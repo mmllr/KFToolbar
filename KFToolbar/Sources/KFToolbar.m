@@ -28,7 +28,6 @@ typedef NS_ENUM(NSUInteger, KFToolbarVisibilityTransitionState)
 @property (nonatomic, readonly) NSArray *rightButtonConstraints;
 @property (nonatomic, readwrite) NSUInteger selectedIndex;
 
-
 @end
 
 @implementation KFToolbar
@@ -178,11 +177,6 @@ typedef NS_ENUM(NSUInteger, KFToolbarVisibilityTransitionState)
 - (void)setAllowOverlappingItems:(BOOL)allowOverlappingItems {
 	_allowOverlappingItems = allowOverlappingItems;
 	self.needsUpdateConstraints = YES;
-}
-
-- (NSArray *)items
-{
-	return [self.leftItems arrayByAddingObjectsFromArray:self.rightItems];
 }
 
 - (void)setEnabled:(BOOL)enabled
